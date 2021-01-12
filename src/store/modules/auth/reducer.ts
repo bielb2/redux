@@ -3,6 +3,8 @@ import { AuthAction, AuthState } from "./types";
 const initialState: AuthState = {
   loadingSignInRequest: false,
   isSignedIn: false,
+  error: false,
+  token: null
 }
 
 // state = estado atual da aplicação
@@ -18,7 +20,19 @@ export default function auth
       return {
         ...state,
         loadingSignInRequest: true,
-      }
+      };
+    case '@auth/SIGN_IN_SUCCESS':
+      return {
+        ...state,
+        loadingSignInRequest: false,
+        isSignedIn: true,
+        token: action.payload.token
+      };
+    case '@auth/SIGN_IN_FAILURE':
+      return {
+        ...state,
+        error: true
+      };
     default:
       return state;
   }

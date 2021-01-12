@@ -1,7 +1,7 @@
-import { takeLatest, call, put, all } from 'redux-saga/effects'
+import { takeLatest, call, put, all } from 'redux-saga/effects';
 import { ActionType } from "typesafe-actions";
-import * as actions from './actions'
-import api from '../../../services/api'
+import * as actions from './actions';
+import api from '../../../services/api';
 
 
 export function* singIn({ payload }: ActionType<typeof actions.signInRequest>) {
